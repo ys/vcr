@@ -2,6 +2,8 @@
 
 Use json based cassettes to playback http queries.
 
+![](https://upload.wikimedia.org/wikipedia/commons/6/67/VHS-cassette.jpg)
+
 ## Usage
 
 ```
