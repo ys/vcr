@@ -30,11 +30,11 @@ This will reallow connections
 
 ```
 module.exports.cassettes = {
-  'yubiexpire post': {
+  'imdb rating post': {
     'host': 'https://api.imdb.com',
     'path': '/',
     'method': 'post',
-    'body': { 'jurassicPark': { 'rating': '💕a'}},
+    'body': { 'jurassicPark': { 'rating': '💕'}},
     'code': 200
   }
 }
