@@ -26,4 +26,16 @@ This will mock connections to a certain endpoint
 
 This will reallow connections
 
+## VHS format
 
+```
+module.exports.cassettes = {
+  'yubiexpire post': {
+    'host': 'https://api.imdb.com',
+    'path': '/',
+    'method': 'post',
+    'body': { 'jurassicPark': { 'rating': '💕a'}},
+    'code': 200
+  }
+}
+```
