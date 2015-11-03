@@ -15,15 +15,17 @@ module.exports.get = function(vcrName) {
 }
 
 module.exports.play = function(names) {
-  _.each(Array.prototype.slice.call(arguments), function(cassetteName){
+  var playedCassettes = _.reduce(Array.prototype.slice.call(arguments), function(playedCassettes, cassetteName){
     var cassette = exports.get(cassetteName)
     var path = cassetteName
     var method = cassette.method || 'get'
     if (cassette.path) {
       path = cassette.path
     }
-    nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).reply(cassette.code, cassette.body)
-  })
+    playedCassettes[cassetteName] = nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).reply(cassette.code, cassette.body)
+    return playedCassettes
+  }, {})
+  return playedCassettes
 }
 
 module.exports.stop = function() {

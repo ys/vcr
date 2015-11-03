@@ -30,4 +30,10 @@ describe("vcr", function() {
     spy.should.have.been.calledTwice
     vcr.get.restore()
   })
+  it("returns a hash with cassettes", function() {
+    process.env.CASSETTES_DIR = path.resolve(__dirname, 'support', 'cassettes')
+    vcr = require("../index.js")
+    var c = vcr.play('cassette', 'cassette')
+    assert(c["cassette"])
+  })
 })
