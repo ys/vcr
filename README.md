@@ -1,4 +1,4 @@
-# VCR
+# VCR [![Build Status](https://travis-ci.org/ys/vcr.svg?branch=master)](https://travis-ci.org/ys/vcr)
 
 Use json based cassettes to playback http queries.
 
