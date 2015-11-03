@@ -29,6 +29,7 @@ module.exports.stop = function() {
 }
 
 module.exports.playback = function() {
-  return nock.disableNetConnect()
+  nock.disableNetConnect()
+  nock.enableNetConnect(/localhost/)
 }
 
