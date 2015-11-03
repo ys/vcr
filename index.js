@@ -14,14 +14,16 @@ module.exports.get = function(vcrName) {
   return cassettes[vcrName]
 }
 
-module.exports.play = function(vcrName) {
-  var cassette = cassettes[vcrName]
-  var path = vcrName
-  var method = cassette.method || 'get'
-  if (cassette.path) {
-    path = cassette.path
-	}
-  return nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).reply(cassette.code, cassette.body)
+module.exports.play = function(names) {
+  _.each(Array.prototype.slice.call(arguments), function(cassetteName){
+    var cassette = exports.get(cassetteName)
+    var path = cassetteName
+    var method = cassette.method || 'get'
+    if (cassette.path) {
+      path = cassette.path
+    }
+    nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).reply(cassette.code, cassette.body)
+  })
 }
 
 module.exports.stop = function() {
