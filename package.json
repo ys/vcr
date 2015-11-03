@@ -1,6 +1,6 @@
 {
   "name": "vcr",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Play cassettes instead of making http queries",
   "main": "index.js",
   "scripts": {
