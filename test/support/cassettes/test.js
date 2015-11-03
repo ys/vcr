@@ -1,3 +1,7 @@
 module.exports.cassettes = {
-  'cassette': {}
+  'cassette': {
+    'host': 'example.com',
+    'path': '/lol',
+    'method': 'get'
+  }
 }
