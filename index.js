@@ -14,18 +14,14 @@ module.exports.get = function(vcrName) {
   return cassettes[vcrName]
 }
 
-module.exports.play = function(names) {
-  var playedCassettes = _.reduce(Array.prototype.slice.call(arguments), function(playedCassettes, cassetteName){
-    var cassette = exports.get(cassetteName)
-    var path = cassetteName
-    var method = cassette.method || 'get'
-    if (cassette.path) {
-      path = cassette.path
-    }
-    playedCassettes[cassetteName] = nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).reply(cassette.code, cassette.body, cassette.headers)
-    return playedCassettes
-  }, {})
-  return playedCassettes
+module.exports.play = function(cassetteName) {
+  var cassette = exports.get(cassetteName)
+  var path = cassetteName
+  var method = cassette.method || 'get'
+  if (cassette.path) {
+    path = cassette.path
+  }
+  return nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).reply(cassette.code, cassette.body, cassette.headers)
 }
 
 module.exports.stop = function() {

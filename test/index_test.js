@@ -22,18 +22,10 @@ describe("vcr", function() {
     spy.should.have.been.calledOnce
     vcr.get.restore()
   })
-  it("plays multiple cassettes", function() {
+  it("returns a nock", function() {
     process.env.CASSETTES_DIR = path.resolve(__dirname, 'support', 'cassettes')
     vcr = require("../index.js")
-    var spy = sinon.spy(vcr, "get")
-    vcr.play('cassette', 'cassette')
-    spy.should.have.been.calledTwice
-    vcr.get.restore()
-  })
-  it("returns a hash with cassettes", function() {
-    process.env.CASSETTES_DIR = path.resolve(__dirname, 'support', 'cassettes')
-    vcr = require("../index.js")
-    var c = vcr.play('cassette', 'cassette')
-    assert(c["cassette"])
+    var c = vcr.play('cassette')
+    assert(c)
   })
 })
