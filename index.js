@@ -22,7 +22,7 @@ module.exports.play = function(names) {
     if (cassette.path) {
       path = cassette.path
     }
-    playedCassettes[cassetteName] = nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).reply(cassette.code, cassette.body)
+    playedCassettes[cassetteName] = nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).reply(cassette.code, cassette.body, cassette.headers)
     return playedCassettes
   }, {})
   return playedCassettes
