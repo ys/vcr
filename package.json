@@ -1,5 +1,5 @@
 {
-  "name": "vcr",
+  "name": "ys-vcr",
   "version": "0.2.0",
   "description": "Play cassettes instead of making http queries",
   "main": "index.js",
