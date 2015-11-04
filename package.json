@@ -1,6 +1,6 @@
 {
+  "version": "0.4.0",
   "name": "ys-vcr",
-  "version": "0.3.1",
   "description": "Play cassettes instead of making http queries",
   "main": "index.js",
   "scripts": {
