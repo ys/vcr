@@ -14,14 +14,15 @@ module.exports.get = function(vcrName) {
   return cassettes[vcrName]
 }
 
-module.exports.play = function(cassetteName) {
+module.exports.play = function(cassetteName, times) {
   var cassette = exports.get(cassetteName)
   var path = cassetteName
   var method = cassette.method || 'get'
   if (cassette.path) {
     path = cassette.path
   }
-  return nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).reply(cassette.code, cassette.body, cassette.headers)
+  return nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).times(times or 1)
+    .reply(cassette.code, cassette.body, cassette.headers)
 }
 
 module.exports.stop = function() {
