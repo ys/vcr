@@ -21,7 +21,7 @@ module.exports.play = function(cassetteName, times) {
   if (cassette.path) {
     path = cassette.path
   }
-  return nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).times(times or 1)
+  return nock(cassette.host).filteringPath(/\?.*/g, '')[method](path).times(times || 1)
     .reply(cassette.code, cassette.body, cassette.headers)
 }
 
